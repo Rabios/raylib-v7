@@ -130,6 +130,7 @@ raylib-v7 --help/-h               Shows help for using raylib-v7
 3. [physac](https://github.com/victorfisac/physac)
 4. [v7](https://github.com/cesanta/v7)
 5. Modified version of [SasLuca/raylib-cmake-template](https://github.com/SasLuca/raylib-cmake-template)
+6. [miniz](https://github.com/richgel999/miniz), For executable builder!
 
 ### Special Thanks
 
@@ -145,5 +146,4 @@ Following v7 license, raylib-v7 licensed under GNU GPL v2 license!
 
 These are list of next TODOs
 
-- [ ] Fix executable builder...
 - [ ] Fix performance bottlenecks...
