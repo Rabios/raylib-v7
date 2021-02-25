@@ -420,7 +420,7 @@ void js_return_shader(struct v7* v7, v7_val_t* res, Shader shader) {
 
 Shader js_shader_from_obj(struct v7* v7, v7_val_t obj) {
     int locs[32] = { 0 };
-    for (int i = 0; i < 32; i++) locs[i] = v7_get_int(v7, v7_array_get(v7, obj, "locs", ~0), i);
+    for (int i = 0; i < 32; i++) locs[i] = v7_get_int(v7, v7_array_get(v7, v7_get(v7, obj, "locs", ~0), i));
     Shader shader = (Shader){
         v7_get_int(v7, v7_get(v7, obj, "id", ~0)),
         locs
