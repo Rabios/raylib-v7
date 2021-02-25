@@ -243,7 +243,7 @@ static char* load_mod_zip_func(char* name)
     return buffer;
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv) {
     enum v7_err err_code = V7_OK;
     struct v7* v7 = v7_create();
     v7_val_t result;
@@ -266,8 +266,7 @@ int main(int argc, char **argv) {
     raylib_v7_load_physac(v7);
     raylib_v7_load_models(v7);
     //raylib_v7_load_rnet(v7);
-    
-    
+
     mz_zip_zero_struct(&zip_file);
     if (mz_zip_reader_init_cfile(&zip_file, v7_open_self(argv[0]), 0, 0)) {
         char* code = load_mod_zip_func("main");
@@ -279,7 +278,6 @@ int main(int argc, char **argv) {
             free(code);
         }
     }
-
     if (argc >= 1) {
         if (TextIsEqual(argv[1], "-h") || TextIsEqual(argv[1], "--help")) {
             printf("%s\n\n\0", "raylib-v7 USAGE:");
