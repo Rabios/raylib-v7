@@ -1,2 +1,1 @@
 [ ] Fix performance bottlenecks!
-[ ] Fix executable builder feature (Commented code in main.c with miniz)

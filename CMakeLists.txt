@@ -7,9 +7,9 @@ set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
 set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib")
 set(RAYLIB_DIR "${LIB_DIR}/raylib")
 set(V7_DIR "${LIB_DIR}/v7")
-#set(MINIZ_DIR "${LIB_DIR}/miniz")
+set(MINIZ_DIR "${LIB_DIR}/miniz")
 set(MAIN
-   #[["${LIB_DIR}/dirent/dirent.h"]]
+   "${LIB_DIR}/dirent/dirent.h"
    "${SRC_DIR}/main.c"
    "${SRC_DIR}/get_set.c"
    "${SRC_DIR}/types.c"
@@ -27,7 +27,7 @@ set(MAIN
    "${SRC_DIR}/raymath_js.c"
    "${SRC_DIR}/raygui_js.c"
    "${SRC_DIR}/rlights_js.c"
-   #[["${SRC_DIR}/rnet_js.c"]]
+   "${SRC_DIR}/rnet_js.c"
    "${SRC_DIR}/gestures_js.c")
 
 set(LIBS
@@ -55,5 +55,5 @@ add_subdirectory(${V7_DIR})
 target_link_libraries(${PROJECT_NAME} PRIVATE "v7" ${V7_LIBS})
 
 # miniz
-#add_subdirectory(${MINIZ_DIR})
-#target_link_libraries(${PROJECT_NAME} PRIVATE "miniz" ${MINIZ_LIBS})
+add_subdirectory(${MINIZ_DIR})
+target_link_libraries(${PROJECT_NAME} PRIVATE "miniz" ${MINIZ_LIBS})

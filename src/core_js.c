@@ -180,12 +180,12 @@ static inline enum v7_err js_get_monitor_refresh_rate(struct v7* v7, v7_val_t* r
 }
 
 static inline enum v7_err js_get_window_position(struct v7* v7, v7_val_t* res) {
-    js_return_vec2(v7, res, GetWindowPosition(v7_get_int(v7, v7_arg(v7, 0))));
+    js_return_vec2(v7, res, GetWindowPosition());
     return V7_OK;
 }
 
 static inline enum v7_err js_get_window_scale_dpi(struct v7* v7, v7_val_t* res) {
-    js_return_vec2(v7, res, GetWindowScaleDPI(v7_get_int(v7, v7_arg(v7, 0))));
+    js_return_vec2(v7, res, GetWindowScaleDPI());
     return V7_OK;
 }
 

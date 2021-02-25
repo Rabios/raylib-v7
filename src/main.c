@@ -29,11 +29,16 @@
 #include <physac_js.h>
 #include <models_js.h>
 //#include <rnet_js.h>
+#include <miniz/miniz.c>
 #include <miniz/miniz.h>
 
-/*
 #ifdef WIN32
-#include <windows.h>
+//#include <windows.h>
+#include <stdint.h>
+#define MAX_PATH 4096
+uint32_t GetModuleFileNameA(void *, const char *, uint32_t );
+
+
 #else
 #include <unistd.h>
 #endif
@@ -47,16 +52,39 @@
 #else
 #include <dirent.h>
 #endif
-*/
 
 #ifndef RAYLIB_VERSION
 #define RAYLIB_VERSION "3.5"
 #endif
 
-/*
-static mz_zip_archive zip_file;
+/* Use platform specific functions. */
+static inline FILE *open_self_platform(void)
+{
+  #ifdef WIN32
+  char path[MAX_PATH + 1];
+  memset(path, '\0', sizeof(path));
 
-static inline int build_executable(const char* self_path, const char* input_path);
+  GetModuleFileNameA(NULL, path, MAX_PATH);
+  return fopen(path, "rb");
+  #elif defined(__linux__)
+  return fopen("/proc/self/exe", "r");
+  #else
+  /* TODO: Implement for Darwin and BSD hosts. */
+  return NULL; /* fallback to argv0 */
+  #endif
+}
+
+static FILE *v7_open_self(const char *argv0)
+{
+  FILE *self = open_self_platform();
+
+  if (self == NULL)
+    self = fopen(argv0, "rb");
+
+  return self;
+}
+
+static mz_zip_archive zip_file;
 
 static inline void append_file(FILE* dst, FILE* src)
 {
@@ -68,7 +96,7 @@ static inline void append_file(FILE* dst, FILE* src)
     } while (count == 4096);
 }
 
-static inline int build_executable(const char* self_path, const char* input_path)
+static inline int build_executable(const char* argv0, const char* input_path)
 {
     printf("Create new executable from %s\n", input_path);
 
@@ -104,11 +132,7 @@ static inline int build_executable(const char* self_path, const char* input_path
         return -1;
     }
 
-    FILE* self = fopen(self_path, "rb");
-    if (self == NULL) {
-        puts("Can't open itself");
-        return -1;
-    }
+    FILE* self = v7_open_self(argv0);
 
     // Copy self into output.
     append_file(output, self);
@@ -217,7 +241,7 @@ static char* load_mod_zip_func(char* name)
 
     mz_zip_reader_extract_to_mem(&zip_file, index, buffer, size, 0);
     return buffer;
-}*/
+}
 
 int main(int argc, char **argv) {
     enum v7_err err_code = V7_OK;
@@ -243,9 +267,9 @@ int main(int argc, char **argv) {
     raylib_v7_load_models(v7);
     //raylib_v7_load_rnet(v7);
     
-    /*
+    
     mz_zip_zero_struct(&zip_file);
-    if (mz_zip_reader_init_file(&zip_file, argv[0], 0)) {
+    if (mz_zip_reader_init_cfile(&zip_file, v7_open_self(argv[0]), 0, 0)) {
         char* code = load_mod_zip_func("main");
         if (code != NULL) {
             v7_exec(v7, code, &result);
@@ -254,7 +278,7 @@ int main(int argc, char **argv) {
             }
             free(code);
         }
-    }*/
+    }
 
     if (argc >= 1) {
         if (TextIsEqual(argv[1], "-h") || TextIsEqual(argv[1], "--help")) {
@@ -263,7 +287,7 @@ int main(int argc, char **argv) {
             printf("%s       %s\n\0", "raylib-v7 --rundir/-d [dir]", "Runs directory of project containing main.js");
             printf("%s            %s\n\0", "raylib-v7 --version/-v", "Prints used raylib version");
             printf("%s        %s\n\0", "raylib-v7 --eval/-e [code]", "Evals JavaScript code (And executes it)");
-            //printf("%s     %s\n\0", "raylib-v7 --compile/-c [file]", "Builds executable of your JavaScript code");
+            printf("%s     %s\n\0", "raylib-v7 --compile/-c [file]", "Builds executable of your JavaScript code");
             printf("%s               %s\n\0", "raylib-v7 --help/-h", "Shows help for using raylib-v7");
 
         }
@@ -301,13 +325,13 @@ int main(int argc, char **argv) {
             }
 
         }
-        /*else if (TextIsEqual(argv[1], "-c") || TextIsEqual(argv[1], "--compile")) {
+        else if (TextIsEqual(argv[1], "-c") || TextIsEqual(argv[1], "--compile")) {
             if (argv[2] != NULL) {
                 if (build_executable(argv[0], argv[2]) != -1) {
                     printf("RAYLIB-V7: SUCCESSED BUILDING EXECUTABLE...\n\0");
                 }
             }
-        }*/
+        }
     } else {
         printf("RAYLIB-V7: NO ARGUMENTS PASSED, Type '-h' or `--help` FOR HELP!\n\0");
     }

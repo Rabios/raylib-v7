@@ -121,8 +121,6 @@ raylib-v7 --compile/-c [file]     Builds executable of your JavaScript code
 raylib-v7 --help/-h               Shows help for using raylib-v7
 ```
 
-> WARNING: Executable builder still WIP, And almost won't work!
-
 ### What uses?
 
 1. [raylib (Including easings, rlgl, raymath, And rlights)](https://github.com/raysan5/raylib)
@@ -133,7 +131,7 @@ raylib-v7 --help/-h               Shows help for using raylib-v7
 
 ### Special Thanks
 
-1. [Astie Teddy (@TSnake41)](https://github.com/TSnake41) for helping me with some stuff!
+1. [Astie Teddy (@TSnake41)](https://github.com/TSnake41) for helping me with some stuff, And for working on the executable builder!
 2. [Ramon Santamaria (@raysan5)](https://github.com/raysan5) for [raylib](https://www.raylib.com)!
 3. [Luca Sas (@SasLuca)](https://github.com/SasLuca) for the [raylib CMake template](https://github.com/SasLuca/raylib-cmake-template)!
 
@@ -146,4 +144,3 @@ Following v7 license, raylib-v7 licensed under GNU GPL v2 license!
 These are list of next TODOs
 
 - [ ] Fix performance bottlenecks...
-- [ ] Fix executable wrapper/builder (The commented C code in `main.c` which uses miniz)
