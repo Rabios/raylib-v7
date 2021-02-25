@@ -27,7 +27,7 @@ set(MAIN
    "${SRC_DIR}/raymath_js.c"
    "${SRC_DIR}/raygui_js.c"
    "${SRC_DIR}/rlights_js.c"
-   "${SRC_DIR}/rnet_js.c"
+   #[["${SRC_DIR}/rnet_js.c"]]
    "${SRC_DIR}/gestures_js.c")
 
 set(LIBS

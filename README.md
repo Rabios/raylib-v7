@@ -121,6 +121,8 @@ raylib-v7 --compile/-c [file]     Builds executable of your JavaScript code
 raylib-v7 --help/-h               Shows help for using raylib-v7
 ```
 
+> NOTE: Executable builder is experimental!
+
 ### What uses?
 
 1. [raylib (Including easings, rlgl, raymath, And rlights)](https://github.com/raysan5/raylib)
@@ -143,4 +145,5 @@ Following v7 license, raylib-v7 licensed under GNU GPL v2 license!
 
 These are list of next TODOs
 
+- [ ] Fix executable builder...
 - [ ] Fix performance bottlenecks...
