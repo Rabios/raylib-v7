@@ -42,7 +42,8 @@ make
 ### Coding
 
 > v7 by the way implements JavaScript 5.1 (Old JavaScript), That means some modern keywords won't be available!
-Enjoy coding with JavaScript!
+
+Enjoy game coding with JavaScript!
 
 ```js
 /*******************************************************************************************
