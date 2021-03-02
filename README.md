@@ -24,7 +24,7 @@ git clone https://github.com/Rabios/raylib-v7
 cd raylib-v7
 cmake -B build
 
-# If you are on Windows, You could build generated solution of raylib-v7 bu CMake with Visual Studio (It works!)
+# If you are on Windows, You could build generated solution of raylib-v7 by CMake with Visual Studio (It works!)
 # In case you don't use Visual Studio, make!
 cd build
 make
