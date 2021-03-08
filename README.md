@@ -24,7 +24,7 @@ git clone https://github.com/Rabios/raylib-v7
 cd raylib-v7
 cmake -B build
 
-# If you are on Windows, You could build generated solution of raylib-v7 bu CMake with Visual Studio (It works!)
+# If you are on Windows, You could build generated solution of raylib-v7 by CMake with Visual Studio (It works!)
 # In case you don't use Visual Studio, make!
 cd build
 make
@@ -41,9 +41,9 @@ make
 
 ### Coding
 
-> v7 by the way implements JavaScript 5.1 (Old JavaScript), That means some keywords won't be available like `const` and `else if`, And some of those modern keywords... 
+> v7 by the way implements JavaScript 5.1 (Old JavaScript), That means some modern keywords won't be available!
 
-Enjoy coding with JavaScript!
+Enjoy game coding with JavaScript!
 
 ```js
 /*******************************************************************************************
