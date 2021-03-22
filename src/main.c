@@ -1,6 +1,6 @@
-// Written by Rabia Alhaffar in 7/February/2020
+// Written by Rabia Alhaffar in 7/February/2021
 // raylib-v7, JavaScript bindings for raylib powered by v7 JavaScript engine!
-// Updated: 25/February/2020
+// Updated: 25/February/2021
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdlib.h>
