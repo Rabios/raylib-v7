@@ -1,6 +1,6 @@
 // Written by Rabia Alhaffar in 7/February/2021
 // raylib-v7, JavaScript bindings for raylib powered by v7 JavaScript engine!
-// Updated: 25/February/2021
+// Updated: 9/June/2021
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdlib.h>
@@ -139,11 +139,25 @@ static inline int build_executable(const char* argv0, const char* input_path)
     fclose(self);
 
     if (S_ISREG(st.st_mode)) {
-        // Consider input as a bare bundle, just append file to get output.
-        FILE* input = fopen(input_path, "rb");
+        mz_zip_archive zip;
+        mz_zip_zero_struct(&zip);
 
-        append_file(output, input);
-        fclose(input);
+        if (!mz_zip_writer_init_cfile(&zip, output, 0)) {
+            puts("Can't initialize zip writter inside output.");
+            return -1;
+        }
+
+        if (!mz_zip_writer_add_file(&zip, "main", input_path, NULL, 0,
+            MZ_BEST_COMPRESSION)) {
+            printf("miniz error: %x\n", mz_zip_get_last_error(&zip));
+        }
+
+        puts("Finalizing zip archive...");
+
+        if (!mz_zip_writer_finalize_archive(&zip)) {
+            puts("Can't finalize archive.");
+            return -1;
+        }
     }
     else if (S_ISDIR(st.st_mode)) {
         // We need to explore the directory and write each file to a zip file.

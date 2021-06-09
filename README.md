@@ -4,6 +4,8 @@
 </div>
 <br>
 
+> NOTE: This bindings are no longer under development due to lack of performance, Don't use it if you are building games cause it won't help...
+
 ### Build and Usage
 
 The bindings written fully in C, And it's contain following modules:
@@ -144,6 +146,4 @@ Following v7 license, raylib-v7 licensed under GNU GPL v2 license!
 
 ### TODO
 
-These are list of next TODOs
-
-- [ ] Fix performance bottlenecks...
+- [ ] Fix performance bottlenecks (raylib-v7 struggles due to the JavaScript side...)
