@@ -1,6 +1,6 @@
 // Written by Rabia Alhaffar in 7/February/2021
 // raylib-v7, JavaScript bindings for raylib powered by v7 JavaScript engine!
-// Updated: 9/June/2021
+// Updated: 25/July/2021
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdlib.h>
@@ -294,18 +294,18 @@ int main(int argc, char** argv) {
     }
     if (argc >= 1) {
         if (TextIsEqual(argv[1], "-h") || TextIsEqual(argv[1], "--help")) {
-            printf("%s\n\n\0", "raylib-v7 USAGE:");
-            printf("%s         %s\n\0", "raylib-v7 --run/-r [file]", "Runs JavaScript file");
-            printf("%s       %s\n\0", "raylib-v7 --rundir/-d [dir]", "Runs directory of project containing main.js");
-            printf("%s            %s\n\0", "raylib-v7 --version/-v", "Prints used raylib version");
-            printf("%s        %s\n\0", "raylib-v7 --eval/-e [code]", "Evals JavaScript code (And executes it)");
-            printf("%s     %s\n\0", "raylib-v7 --compile/-c [file]", "Builds executable of your JavaScript code");
-            printf("%s               %s\n\0", "raylib-v7 --help/-h", "Shows help for using raylib-v7");
+            printf("%s\n\n", "raylib-v7 USAGE:");
+            printf("%s         %s\n", "raylib-v7 --run/-r [file]", "Runs JavaScript file");
+            printf("%s       %s\n", "raylib-v7 --rundir/-d [dir]", "Runs directory of project containing main.js");
+            printf("%s            %s\n", "raylib-v7 --version/-v", "Prints used raylib version");
+            printf("%s        %s\n", "raylib-v7 --eval/-e [code]", "Evals JavaScript code (And executes it)");
+            printf("%s     %s\n", "raylib-v7 --compile/-c [file]", "Builds executable of your JavaScript code");
+            printf("%s               %s\n", "raylib-v7 --help/-h", "Shows help for using raylib-v7");
 
         }
         else if (TextIsEqual(argv[1], "-v") || TextIsEqual(argv[1], "--version")) {
-            printf("%s%s\n\0", "RAYLIB VERSION: ", RAYLIB_VERSION);
-            printf("%s%s\n\0", "V7 JAVASCRIPT ENGINE VERSION: ", V7_VERSION);
+            printf("%s%s\n", "RAYLIB VERSION: ", RAYLIB_VERSION);
+            printf("%s%s\n", "V7 JAVASCRIPT ENGINE VERSION: ", V7_VERSION);
 
         }
         else if (TextIsEqual(argv[1], "-r") || TextIsEqual(argv[1], "--run")) {
@@ -340,12 +340,12 @@ int main(int argc, char** argv) {
         else if (TextIsEqual(argv[1], "-c") || TextIsEqual(argv[1], "--compile")) {
             if (argv[2] != NULL) {
                 if (build_executable(argv[0], argv[2]) != -1) {
-                    printf("RAYLIB-V7: SUCCESSED BUILDING EXECUTABLE...\n\0");
+                    printf("RAYLIB-V7: SUCCESSED BUILDING EXECUTABLE...\n");
                 }
             }
         }
     } else {
-        printf("RAYLIB-V7: NO ARGUMENTS PASSED, Type '-h' or `--help` FOR HELP!\n\0");
+        printf("RAYLIB-V7: NO ARGUMENTS PASSED, Type '-h' or `--help` FOR HELP!\n");
     }
 
     v7_destroy(v7);
